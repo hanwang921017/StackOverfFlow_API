@@ -6,7 +6,7 @@ rm(list=ls())
 library(sna)
 library(igraph)
 #import data
-QA <- read.csv('allPosts.tsv',
+QA <- read.csv('data/allPosts.tsv',
                header=TRUE, sep='\t', row.names=1, check.names=FALSE, na.strings = "")
 asker<-QA[['AskerId']]
 answerer<-QA[['AnswererId']]
@@ -60,4 +60,4 @@ p2 <- simpleNetwork(data_com,height="100px", width="100px")
 print(p2)
 ############################
 # save the component data to computer
-write.table(data_com, file='data_com.tsv', quote=FALSE, sep='\t',row.names = F)
+write.table(data_com, file='data/askerAnswerer-giant.tsv', quote=FALSE, sep='\t',row.names = F)

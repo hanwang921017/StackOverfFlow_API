@@ -19,8 +19,8 @@ network <- graph_from_data_frame(d=links, directed=T)
 # Count the number of degree for each node:
 deg <- degree(network, mode="all")
 # Plot
-plot(network, vertex.size=deg*1.5,vertex.label.cex=0.3,edge.arrow.size=0.2,
-     layout=layout.fruchterman.reingold, main="fruchterman.reingold")
+plot(network, vertex.size=deg*1.5,edge.arrow.size=0.2,vertex.label.cex=0.3,
+     layout=layout.fruchterman.reingold, main="fruchterman.reingold layout")
 #Title
 text(0,-1.5,"StackOverFlow Social Network Tagged Python",col="red", cex=1.5)
 
@@ -39,7 +39,7 @@ network_com <- graph_from_data_frame(d=links, directed=T)
 deg <- degree(network, mode="all")
 # Plot
 plot(network_com, vertex.size=deg*1.5,vertex.label.cex=0.3,edge.arrow.size=0.2,
-     layout=layout.fruchterman.reingold, main="fruchterman.reingold")
+     layout=layout.fruchterman.reingold, main="fruchterman.reingold layout")
 #Title
 text(0,-1.5,"StackOverFlow Social Network Component",col="red", cex=1.5)
 
@@ -52,10 +52,12 @@ library(networkD3)
 data_total <- data.frame(from=asker,to=answerer)
 data_com <- data.frame(from=asker_com,to=answerer_com)
 # Plot
+#plot the whole network
 p1 <- simpleNetwork(data_total,height="100px", width="100px")
 print(p1)
+#plot the giant component network
 p2 <- simpleNetwork(data_com,height="100px", width="100px")
 print(p2)
 ############################
 # save the component data to computer
-write.csv(data_com,file="/Users/hanwang/Documents/ECE720X01/Assignments/A1/data_com.csv",quote=F,row.names = F)
+write.table(data_com, file='data_com.tsv', quote=FALSE, sep='\t',row.names = F)

@@ -6,8 +6,8 @@ rm(list=ls())
 library(sna)
 library(igraph)
 #import data
-QA <- read.csv('allPosts.csv',
-               header=TRUE, row.names=1, check.names=FALSE, na.strings = "")
+QA <- read.csv('allPosts.tsv',
+               header=TRUE, sep='\t', row.names=1, check.names=FALSE, na.strings = "")
 asker<-QA[['AskerId']]
 answerer<-QA[['AnswererId']]
 # create links
